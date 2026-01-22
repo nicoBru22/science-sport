@@ -1,0 +1,19 @@
+
+
+.footerContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px;
+  align-items: center;
+}
+
+.footerSection {
+  background-color: black;
+  color: white;
+}
+
+.navFooter {
+  display: flex;
+  flex-direction: row;
+}

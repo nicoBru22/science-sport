@@ -1,6 +1,6 @@
 # SportScience
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.2.2.
+Ce projet a pour objectif de permettre à toutes les personnes d'avoir accès à des connaissances scientifiques sur l'activité physique de manière générale en résumant et vulgarisant des articles scientifiques.
 
 ## Development server
 
