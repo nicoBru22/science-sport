@@ -22,4 +22,8 @@ export class ArticleJsonServerService implements ArticleService {
     addArticle(article: Article): Observable<Article> {
         return this.http.post<Article>(this.Article_API_URL, article)
     }
+
+    deleteArticle(id: string): Observable<void> {
+        return this.http.delete<void>(`${this.Article_API_URL}/${id}`);
+    }
 }

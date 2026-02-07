@@ -5,4 +5,5 @@ export abstract class ArticleService {
     abstract getArticleList(): Observable<Article[]>;
     abstract getArticleById(id: string): Observable<Article>;
     abstract addArticle(article: Article): Observable<Article>;
+    abstract deleteArticle(id: string): Observable<void>;
 }

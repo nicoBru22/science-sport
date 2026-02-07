@@ -44,22 +44,6 @@
       "texte3Article": "Les sels d'argent étaient autrefois indispensables pour la photographie argentique.",
       "stConclusionArticle": "Bilan",
       "texteConclusionArticle": "Moins rare que l'or, il n'en reste pas moins un métal stratégique."
-    },
-    {
-      "id": "1270",
-      "titre": "test titre",
-      "categorie": "test cate",
-      "stIntroArticle": "test intro",
-      "texteIntroArticle": "text intro",
-      "st1Article": "test st1",
-      "texte1Article": "text 1",
-      "st2Article": "test st2",
-      "texte2Article": "text 2",
-      "st3Article": "test st 3",
-      "texte3Article": "test 3",
-      "stConclusionArticle": "text conclu",
-      "texteConclusionArticle": "text conclu",
-      "imageUrl": ""
     }
   ]
 }
