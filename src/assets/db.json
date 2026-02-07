@@ -1,22 +1,65 @@
 {
-    "articles": [
-        {
-            "id": 1,
-            "titre": "nom premier article Vitriol",
-            "categorie": "science",
-            "texte": "Le  vitriol fumant , populairement abrégé en vitriol, correspond à l'acide sulfurique."
-        },
-        {
-            "id": 2,
-            "titre": "nom deuxième article Or",
-            "categorie": "sport",
-            "texte": "L'or est l'élément chimique de numéro atomique 79, de symbole Au."
-        },
-        {
-            "id": 3,
-            "titre": "nom troisième article Or",
-            "categorie": "sport",
-            "texte": "L'argent est l'élément chimique de numéro atomique 47, de symbole Ag. "
-        }
-    ]
+  "articles": [
+    {
+      "id": "1",
+      "titre": "Vitriol : l'acide sulfurique",
+      "categorie": "science",
+      "stIntroArticle": "Qu'est-ce que le vitriol ?",
+      "texteIntroArticle": "Le vitriol fumant, populairement abrégé en vitriol, correspond à l'acide sulfurique.",
+      "st1Article": "Propriétés chimiques",
+      "texte1Article": "C'est un acide minéral fort, incolore et inodore.",
+      "st2Article": "Usages courants",
+      "texte2Article": "Il est utilisé dans la fabrication d'engrais et de batteries.",
+      "st3Article": "Sécurité",
+      "texte3Article": "Attention, c'est une substance extrêmement corrosive.",
+      "stConclusionArticle": "En résumé",
+      "texteConclusionArticle": "Le vitriol reste un pilier de l'industrie chimique moderne."
+    },
+    {
+      "id": "2",
+      "titre": "L'Or : le métal précieux",
+      "categorie": "science",
+      "stIntroArticle": "Un élément mythique",
+      "texteIntroArticle": "L'or est l'élément chimique de numéro atomique 79, de symbole Au.",
+      "st1Article": "Caractéristiques",
+      "texte1Article": "C'est un métal de transition jaune, brillant, malléable et ductile.",
+      "st2Article": "L'or dans le sport",
+      "texte2Article": "Il représente l'ultime récompense lors des Jeux Olympiques.",
+      "st3Article": "Extraction",
+      "texte3Article": "On le trouve souvent sous forme de pépites ou de filons.",
+      "stConclusionArticle": "Conclusion",
+      "texteConclusionArticle": "L'or est aussi précieux pour la science que pour l'économie."
+    },
+    {
+      "id": "3",
+      "titre": "L'Argent : conducteur d'exception",
+      "categorie": "science",
+      "stIntroArticle": "Introduction à l'argent",
+      "texteIntroArticle": "L'argent est l'élément chimique de numéro atomique 47, de symbole Ag.",
+      "st1Article": "Conductivité",
+      "texte1Article": "L'argent possède la meilleure conductivité thermique et électrique de tous les métaux.",
+      "st2Article": "Médailles d'argent",
+      "texte2Article": "Dans le sport, l'argent couronne la deuxième place d'un podium.",
+      "st3Article": "Photographie",
+      "texte3Article": "Les sels d'argent étaient autrefois indispensables pour la photographie argentique.",
+      "stConclusionArticle": "Bilan",
+      "texteConclusionArticle": "Moins rare que l'or, il n'en reste pas moins un métal stratégique."
+    },
+    {
+      "id": "1270",
+      "titre": "test titre",
+      "categorie": "test cate",
+      "stIntroArticle": "test intro",
+      "texteIntroArticle": "text intro",
+      "st1Article": "test st1",
+      "texte1Article": "text 1",
+      "st2Article": "test st2",
+      "texte2Article": "text 2",
+      "st3Article": "test st 3",
+      "texte3Article": "test 3",
+      "stConclusionArticle": "text conclu",
+      "texteConclusionArticle": "text conclu",
+      "imageUrl": ""
+    }
+  ]
 }

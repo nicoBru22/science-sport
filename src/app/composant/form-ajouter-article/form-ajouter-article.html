@@ -1,0 +1,49 @@
+<p>Ajouter un nouvel article</p>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <label for="titre">Titre :</label>
+    <input type="text" id="titre" formControlName="titre">
+
+    <label for="categorie">Categorie :</label>
+    <input type="text" id="categorie" formControlName="categorie">
+
+    <div>
+        <label for="stIntroArticle">Sous-titre Introdution :</label>
+        <input type="text" id="stIntroArticle" formControlName="stIntroArticle">
+
+        <label for="texteIntroArticle">Introduction :</label>
+        <textarea id="texteIntroArticle" formControlName="texteIntroArticle"></textarea>
+    </div>
+
+    <div>
+        <label for="st1Article">Sous-titre 1 :</label>
+        <input type="text" id="st1Article" formControlName="st1Article">
+
+        <label for="texte1Article">Texte 1:</label>
+        <textarea id="texte1Article" formControlName="texte1Article"></textarea>
+    </div>
+
+    <div>
+        <label for="st2Article">Sous-titre 2 :</label>
+        <input type="text" id="st2Article" formControlName="st2Article">
+
+        <label for="texte2Article">Texte 2:</label>
+        <textarea id="texte2Article" formControlName="texte2Article"></textarea>
+    </div>
+
+    <div>
+        <label for="st3Article">Sous-titre 3 :</label>
+        <input type="text" id="st3Article" formControlName="st3Article">
+
+        <label for="texte3Article">Texte 3:</label>
+        <textarea id="texte3Article" formControlName="texte3Article"></textarea>
+    </div>
+
+    <label for="stConclusionArticle">Sous-titre conclusion :</label>
+    <input type="text" id="stConclusionArticle" formControlName="stConclusionArticle">   
+
+    <label for="texteConclusionArticle">Texte conclusion :</label>
+    <textarea id="texteConclusionArticle" formControlName="texteConclusionArticle"></textarea>
+
+    <button type="submit" [disabled]="form.invalid">Ajouter</button>
+</form>

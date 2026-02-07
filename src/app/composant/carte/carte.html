@@ -1,13 +1,13 @@
-
-
-
-
-<div class="carteArticle">
-    <a class="carteClick">
-        <div class="containerImgArticle">
-            <img class="imgArticle" alt="image de l'article">
-        </div>
-        <div class="titreArticle">Titre de l'article</div>
-        <div class="categorieArticle">Catégorie</div>
-    </a>
-</div>
+@for (article of articleList(); track article.id) {
+  <div class="carteArticle" [routerLink]="['/article', article.id]">
+      <div class="carteClick">
+          <div class="containerImgArticle">
+              <img class="imgArticle" alt="image de l'article">
+          </div>
+          <div class="titreArticle">{{ article.titre }}</div>
+          <div class="categorieArticle">{{ article.categorie }}</div>
+      </div>
+  </div>
+} @empty {
+    <div>Aucun article trouvé</div>
+}

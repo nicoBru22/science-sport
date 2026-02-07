@@ -1,0 +1,43 @@
+@if (error()) {
+  <div>
+    <p>Une erreur est survenue lors du chargement de l'article.</p>
+  </div>
+} @else if (article(); as item) {
+  <article>
+    <header>
+      <h1>{{ item.titre }}</h1>
+      <span>{{ item.categorie }}</span>
+    </header>
+
+    <section>
+      <h2>{{ item.stIntroArticle }}</h2>
+      <p style="white-space: pre-line;">{{ item.texteIntroArticle }}</p>
+    </section>
+
+    <section>
+      <h3>{{ item.st1Article }}</h3>
+      <p style="white-space: pre-line;">{{ item.texte1Article }}</p>
+    </section>
+
+    <section>
+      <h3>{{ item.st2Article }}</h3>
+      <p style="white-space: pre-line;">{{ item.texte2Article }}</p>
+    </section>
+
+    <section>
+      <h3>{{ item.st3Article }}</h3>
+      <p style="white-space: pre-line;">{{ item.texte3Article }}</p>
+    </section>
+
+    <footer>
+      <h2>{{ item.stConclusionArticle }}</h2>
+      <p style="white-space: pre-line;">{{ item.texteConclusionArticle }}</p>
+    </footer>
+
+    <nav>
+      <button routerLink="/blog">Retour à la liste</button>
+    </nav>
+  </article>
+} @else {
+  <p>Chargement en cours...</p>
+}
