@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { Carte } from '../../composant/carte/carte';
 
 @Component({
   selector: 'app-blog',
-  imports: [],
+  imports: [Carte],
   templateUrl: './blog.html',
   styleUrl: './blog.scss',
 })

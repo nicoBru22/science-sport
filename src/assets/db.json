@@ -1,0 +1,22 @@
+{
+    "articles": [
+        {
+            "id": 1,
+            "titre": "nom premier article Vitriol",
+            "categorie": "science",
+            "texte": "Le  vitriol fumant , populairement abrégé en vitriol, correspond à l'acide sulfurique."
+        },
+        {
+            "id": 2,
+            "titre": "nom deuxième article Or",
+            "categorie": "sport",
+            "texte": "L'or est l'élément chimique de numéro atomique 79, de symbole Au."
+        },
+        {
+            "id": 3,
+            "titre": "nom troisième article Or",
+            "categorie": "sport",
+            "texte": "L'argent est l'élément chimique de numéro atomique 47, de symbole Ag. "
+        }
+    ]
+}
