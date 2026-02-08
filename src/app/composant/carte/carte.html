@@ -1,13 +1,19 @@
-@for (article of articleList(); track article.id) {
-  <div class="carteArticle" [routerLink]="['/article', article.id]">
-      <div class="carteClick">
-          <div class="containerImgArticle">
-              <img class="imgArticle" alt="image de l'article">
-          </div>
-          <div class="titreArticle">{{ article.titre }}</div>
-          <div class="categorieArticle">{{ article.categorie }}</div>
-      </div>
-  </div>
-} @empty {
-    <div>Aucun article trouvé</div>
-}
+<div class="containerCarte">
+    @for (article of articleList(); track article.id) {
+    <div class="carteArticle" [routerLink]="['/article', article.id]">
+        <div class="carteClick">
+            <div class="containerImgArticle">
+                @if (article.imageBase64) {
+                    <img [src]="article.imageBase64" class="imgArticle" alt="image de l'article">
+                } @else {
+                    <img src="assets/images/default-placeholder.png" class="imgArticle" alt="image par défaut">
+                }
+            </div>
+            <div class="titreArticle">{{ article.titre }}</div>
+            <div class="categorieArticle">{{ article.categorie }}</div>
+        </div>
+    </div>
+    } @empty {
+        <div>Aucun article trouvé</div>
+    }
+</div>

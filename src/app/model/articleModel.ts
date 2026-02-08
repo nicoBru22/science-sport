@@ -18,7 +18,9 @@ export interface Article {
     stConclusionArticle: string;
     texteConclusionArticle: string;
 
-    imageUrl?: string | null;
+    imageBase64?: string | null;
+
+    dateCreation: Date;
 }
 
 export const ARTICLE_RULES = {

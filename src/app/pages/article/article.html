@@ -9,6 +9,8 @@
       <span>{{ item.categorie }}</span>
     </header>
 
+    <img [src]="item.imageBase64" class="imgArticle" alt="image de l'article">
+
     <section>
       <h2>{{ item.stIntroArticle }}</h2>
       <p style="white-space: pre-line;">{{ item.texteIntroArticle }}</p>
@@ -29,10 +31,14 @@
       <p style="white-space: pre-line;">{{ item.texte3Article }}</p>
     </section>
 
-    <footer>
+    <section>
       <h2>{{ item.stConclusionArticle }}</h2>
       <p style="white-space: pre-line;">{{ item.texteConclusionArticle }}</p>
-    </footer>
+    </section>
+
+    <section>
+      <p>Article créé le : {{item.dateCreation}}</p>
+    </section>
 
     <button (click)="deleteArticle()">Supprimer cet article</button>
     

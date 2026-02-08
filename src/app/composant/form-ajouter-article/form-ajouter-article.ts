@@ -3,6 +3,7 @@ import { ArticleService } from '../../service/articleService';
 import { Router } from '@angular/router';
 import { ARTICLE_RULES } from '../../model/articleModel';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Article } from '../../model/articleModel';
 
 @Component({
   selector: 'app-form-ajouter-article',
@@ -16,8 +17,11 @@ export class FormAjouterArticle {
   readonly articleService = inject(ArticleService);
   readonly router = inject(Router);
   readonly articleRules = signal(ARTICLE_RULES).asReadonly();
+  
+  // Signal pour la prévisualisation de l'image
+  imagePreview = signal<string | null>(null);
 
-readonly form = new FormGroup({
+  readonly form = new FormGroup({
     titre: new FormControl('', {
       nonNullable: true,
       validators: [
@@ -28,35 +32,50 @@ readonly form = new FormGroup({
       ]
     }),
     categorie: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
-    
-    // Sections Introduction
     stIntroArticle: new FormControl('', { nonNullable: true }),
     texteIntroArticle: new FormControl('', { nonNullable: true }),
-    
-    // Sections de corps (1, 2, 3)
     st1Article: new FormControl('', { nonNullable: true }),
     texte1Article: new FormControl('', { nonNullable: true }),
-    
     st2Article: new FormControl('', { nonNullable: true }),
     texte2Article: new FormControl('', { nonNullable: true }),
-    
     st3Article: new FormControl('', { nonNullable: true }),
     texte3Article: new FormControl('', { nonNullable: true }),
-    
-    // Conclusion
     stConclusionArticle: new FormControl('', { nonNullable: true }),
     texteConclusionArticle: new FormControl('', { nonNullable: true }),
-    
-    imageUrl: new FormControl('') // Optionnel
+    imageBase64: new FormControl('') // Contiendra la chaîne Base64
   });
+
+  // Méthode pour capturer et convertir l'image
+  onFileChange(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files[0]) {
+      const file = input.files[0];
+
+      // Sécurité : Max 1Mo pour une vignette
+      if (file.size > 1024 * 1024) {
+        alert("L'image est trop volumineuse (max 1Mo)");
+        input.value = ''; // Reset l'input
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        const base64 = reader.result as string;
+        this.imagePreview.set(base64); // Pour l'affichage local
+        this.form.patchValue({ imageBase64: base64 }); // Pour l'envoi au serveur
+      };
+      reader.readAsDataURL(file);
+    }
+  }
 
   onSubmit() {
     if (this.form.valid) {
-      const nouvelArticle = this.form.getRawValue();
+      // getRawValue() récupère tout, y compris l'imageUrl en Base64
+      const nouvelArticle = this.form.getRawValue() as Article;
       
       this.articleService.addArticle(nouvelArticle).subscribe({
-        next: () => {
-          console.log('Article créé avec succès !');
+        next: (articleCree) => {
+          console.log('Article créé avec succès ! ID:', articleCree.id);
           this.router.navigate(['/blog']);
         },
         error: (err) => console.error('Erreur lors de la création :', err)

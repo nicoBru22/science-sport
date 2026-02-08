@@ -8,7 +8,7 @@ import { Article } from "../model/articleModel";
 
 export class ArticleJsonServerService implements ArticleService {
     private readonly http = inject(HttpClient);
-    private readonly Article_API_URL = "http://localhost:3000/articles";
+    private readonly Article_API_URL = "http://localhost:8080/api/articles";
 
     getArticleList(): Observable<Article[]> {
         return this.http.get<Article[]>(this.Article_API_URL);

@@ -45,5 +45,12 @@
     <label for="texteConclusionArticle">Texte conclusion :</label>
     <textarea id="texteConclusionArticle" formControlName="texteConclusionArticle"></textarea>
 
+    <label for="image">Vignette :</label>
+    <input type="file" id="image" (change)="onFileChange($event)" accept="image/*">
+
+    @if (imagePreview()) {
+    <img [src]="imagePreview()" style="width: 100px; height: auto; display: block; margin-top: 10px;">
+    }
+
     <button type="submit" [disabled]="form.invalid">Ajouter</button>
 </form>
