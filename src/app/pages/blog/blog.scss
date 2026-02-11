@@ -1,0 +1,42 @@
+.sectionBlog {
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 0 20px;
+}
+
+.headerBlog {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.containerTitreBlog h1 {
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+  color: #1c1c1c;
+}
+
+.containerTitreBlog p {
+  max-width: 600px;
+  color: #555;
+  font-size: 1.05rem;
+}
+
+.btnCreateArticle {
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.btnCreateArticle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}

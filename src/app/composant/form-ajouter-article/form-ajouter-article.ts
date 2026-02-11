@@ -4,11 +4,12 @@ import { Router } from '@angular/router';
 import { ARTICLE_RULES } from '../../model/articleModel';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Article } from '../../model/articleModel';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-form-ajouter-article',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './form-ajouter-article.html',
   styleUrl: './form-ajouter-article.scss',
 })

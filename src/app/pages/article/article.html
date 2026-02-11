@@ -1,51 +1,68 @@
 @if (error()) {
-  <div>
+  <div class="errorContainer">
     <p>Une erreur est survenue lors du chargement de l'article.</p>
   </div>
-} @else if (article(); as item) {
-  <article>
-    <header>
+}
+
+@else if (article(); as item) {
+
+  <article class="articleContainer">
+
+    <header class="articleHeader">
+      <span class="badgeCategorie">{{ item.categorie }}</span>
       <h1>{{ item.titre }}</h1>
-      <span>{{ item.categorie }}</span>
+      <p class="dateArticle">
+        Publié le {{ item.dateCreation }}
+      </p>
     </header>
 
-    <img [src]="item.imageBase64" class="imgArticle" alt="image de l'article">
+    @if (item.imageBase64) {
+      <div class="imageContainer">
+        <img [src]="item.imageBase64" class="imgArticle" alt="image de l'article">
+      </div>
+    }
 
-    <section>
+    <section class="articleSection">
       <h2>{{ item.stIntroArticle }}</h2>
-      <p style="white-space: pre-line;">{{ item.texteIntroArticle }}</p>
+      <p>{{ item.texteIntroArticle }}</p>
     </section>
 
-    <section>
+    <section class="articleSection">
       <h3>{{ item.st1Article }}</h3>
-      <p style="white-space: pre-line;">{{ item.texte1Article }}</p>
+      <p>{{ item.texte1Article }}</p>
     </section>
 
-    <section>
+    <section class="articleSection">
       <h3>{{ item.st2Article }}</h3>
-      <p style="white-space: pre-line;">{{ item.texte2Article }}</p>
+      <p>{{ item.texte2Article }}</p>
     </section>
 
-    <section>
+    <section class="articleSection">
       <h3>{{ item.st3Article }}</h3>
-      <p style="white-space: pre-line;">{{ item.texte3Article }}</p>
+      <p>{{ item.texte3Article }}</p>
     </section>
 
-    <section>
+    <section class="articleSection conclusion">
       <h2>{{ item.stConclusionArticle }}</h2>
-      <p style="white-space: pre-line;">{{ item.texteConclusionArticle }}</p>
+      <p>{{ item.texteConclusionArticle }}</p>
     </section>
 
-    <section>
-      <p>Article créé le : {{item.dateCreation}}</p>
-    </section>
+    <div class="articleActions">
+      <button class="btnDelete" (click)="deleteArticle()">
+        Supprimer
+      </button>
 
-    <button (click)="deleteArticle()">Supprimer cet article</button>
-    
-    <nav>
-      <button routerLink="/blog">Retour à la liste</button>
-    </nav>
+      <button class="btnBack" routerLink="/blog">
+        ← Retour au blog
+      </button>
+    </div>
+
   </article>
-} @else {
-  <p>Chargement en cours...</p>
+
+}
+
+@else {
+  <div class="loadingContainer">
+    <p>Chargement en cours...</p>
+  </div>
 }

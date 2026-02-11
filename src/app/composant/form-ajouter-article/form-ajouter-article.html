@@ -1,56 +1,97 @@
-<p>Ajouter un nouvel article</p>
+<section class="sectionFormArticle">
 
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <label for="titre">Titre :</label>
-    <input type="text" id="titre" formControlName="titre">
+  <div class="headerForm">
+    <h1>Nouvel article</h1>
+    <p>Rédige un article de vulgarisation scientifique en sciences du sport.</p>
+  </div>
 
-    <label for="categorie">Categorie :</label>
-    <input type="text" id="categorie" formControlName="categorie">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="formArticle">
 
-    <div>
-        <label for="stIntroArticle">Sous-titre Introdution :</label>
+    <!-- Infos générales -->
+    <div class="formCard">
+      <h2>Informations générales</h2>
+
+      <div class="formGroup">
+        <label for="titre">Titre</label>
+        <input type="text" id="titre" formControlName="titre">
+      </div>
+
+      <div class="formGroup">
+        <label for="categorie">Catégorie</label>
+        <input type="text" id="categorie" formControlName="categorie">
+      </div>
+    </div>
+
+    <!-- Introduction -->
+    <div class="formCard">
+      <h2>Introduction</h2>
+
+      <div class="formGroup">
+        <label for="stIntroArticle">Sous-titre</label>
         <input type="text" id="stIntroArticle" formControlName="stIntroArticle">
+      </div>
 
-        <label for="texteIntroArticle">Introduction :</label>
-        <textarea id="texteIntroArticle" formControlName="texteIntroArticle"></textarea>
+      <div class="formGroup">
+        <label for="texteIntroArticle">Texte</label>
+        <textarea id="texteIntroArticle" formControlName="texteIntroArticle" rows="5"></textarea>
+      </div>
     </div>
 
-    <div>
-        <label for="st1Article">Sous-titre 1 :</label>
-        <input type="text" id="st1Article" formControlName="st1Article">
+    <!-- Sections -->
+    <div class="formCard" *ngFor="let section of [1,2,3]">
+      <h2>Section {{ section }}</h2>
 
-        <label for="texte1Article">Texte 1:</label>
-        <textarea id="texte1Article" formControlName="texte1Article"></textarea>
+      <div class="formGroup">
+        <label [for]="'st' + section + 'Article'">Sous-titre</label>
+        <input [id]="'st' + section + 'Article'"
+               [formControlName]="'st' + section + 'Article'">
+      </div>
+
+      <div class="formGroup">
+        <label [for]="'texte' + section + 'Article'">Texte</label>
+        <textarea [id]="'texte' + section + 'Article'"
+                  [formControlName]="'texte' + section + 'Article'"
+                  rows="5"></textarea>
+      </div>
     </div>
 
-    <div>
-        <label for="st2Article">Sous-titre 2 :</label>
-        <input type="text" id="st2Article" formControlName="st2Article">
+    <!-- Conclusion -->
+    <div class="formCard">
+      <h2>Conclusion</h2>
 
-        <label for="texte2Article">Texte 2:</label>
-        <textarea id="texte2Article" formControlName="texte2Article"></textarea>
+      <div class="formGroup">
+        <label for="stConclusionArticle">Sous-titre</label>
+        <input type="text" id="stConclusionArticle" formControlName="stConclusionArticle">
+      </div>
+
+      <div class="formGroup">
+        <label for="texteConclusionArticle">Texte</label>
+        <textarea id="texteConclusionArticle"
+                  formControlName="texteConclusionArticle"
+                  rows="5"></textarea>
+      </div>
     </div>
 
-    <div>
-        <label for="st3Article">Sous-titre 3 :</label>
-        <input type="text" id="st3Article" formControlName="st3Article">
+    <!-- Image -->
+    <div class="formCard">
+      <h2>Vignette</h2>
 
-        <label for="texte3Article">Texte 3:</label>
-        <textarea id="texte3Article" formControlName="texte3Article"></textarea>
+      <input type="file"
+             id="image"
+             (change)="onFileChange($event)"
+             accept="image/*">
+
+      @if (imagePreview()) {
+        <div class="previewContainer">
+          <img [src]="imagePreview()" class="imagePreview">
+        </div>
+      }
     </div>
 
-    <label for="stConclusionArticle">Sous-titre conclusion :</label>
-    <input type="text" id="stConclusionArticle" formControlName="stConclusionArticle">   
+    <button type="submit" class="btnSubmit" [disabled]="form.invalid">
+      Publier l’article
+    </button>
 
-    <label for="texteConclusionArticle">Texte conclusion :</label>
-    <textarea id="texteConclusionArticle" formControlName="texteConclusionArticle"></textarea>
+  </form>
 
-    <label for="image">Vignette :</label>
-    <input type="file" id="image" (change)="onFileChange($event)" accept="image/*">
-
-    @if (imagePreview()) {
-    <img [src]="imagePreview()" style="width: 100px; height: auto; display: block; margin-top: 10px;">
-    }
-
-    <button type="submit" [disabled]="form.invalid">Ajouter</button>
-</form>
+</section>

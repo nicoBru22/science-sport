@@ -1,7 +1,19 @@
-<h1>Bienvenue sur le blog de Science et Sport</h1>
+<section class="sectionBlog">
 
-<button [routerLink]="['/article/ajouter']" class="btn btn-primary">
-  Créer un nouvel article
-</button>
+  <div class="headerBlog">
+    <div class="containerTitreBlog">
+      <h1>Blog Science & Sport</h1>
+      <p>
+        Vulgarisation scientifique autour du sport, de la physiologie,
+        des méthodes d’entraînement et des pathologies.
+      </p>
+    </div>
 
-<app-carte></app-carte>
+    <button [routerLink]="['/article/ajouter']" class="btnCreateArticle">
+      + Créer un nouvel article
+    </button>
+  </div>
+
+  <app-carte></app-carte>
+
+</section>
