@@ -11,5 +11,5 @@ import { RouterLink } from "@angular/router";
 })
 export class Carte {
   readonly #articleService = inject(ArticleService);
-  readonly articleList = toSignal(this.#articleService.getArticleList(), {initialValue: []})
+  readonly articleList = toSignal(this.#articleService.getArticleList(), {initialValue: []}) 
 }

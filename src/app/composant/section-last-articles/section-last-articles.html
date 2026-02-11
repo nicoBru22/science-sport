@@ -1,0 +1,14 @@
+<section class="sectionLastArticles">
+    <h2 class="titreSectionLastArticles">Derniers articles</h2>
+    <div class="containerLastArticles">
+        @for(article of threeLastArticle(); track article.id) {
+            <div class="articleCard">
+                <img [src]="article.imageBase64" [alt]="article.titre" class="imgArticle">
+                <h3 class="titreArticle">{{ article.titre }}</h3>
+                <p class="resumeArticle">{{ article.categorie }}</p>
+                <a [routerLink]="['/article', article.id]" class="btnLireArticle">Lire l'article</a>
+            </div>
+        }
+
+    </div>
+</section>

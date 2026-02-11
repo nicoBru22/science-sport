@@ -19,6 +19,10 @@ export class ArticleJsonServerService implements ArticleService {
         return this.http.get<Article>(`${this.Article_API_URL}/${id}`);
     }
 
+    getthreeLastArticles(): Observable<Article[]> {
+        return this.http.get<Article[]>(`${this.Article_API_URL}/troisDerniersArticles`);    
+    }
+
     addArticle(article: Article): Observable<Article> {
         return this.http.post<Article>(this.Article_API_URL, article)
     }

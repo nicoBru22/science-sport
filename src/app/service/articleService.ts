@@ -6,4 +6,5 @@ export abstract class ArticleService {
     abstract getArticleById(id: string): Observable<Article>;
     abstract addArticle(article: Article): Observable<Article>;
     abstract deleteArticle(id: string): Observable<void>;
+    abstract getthreeLastArticles(): Observable<Article[]>;
 }

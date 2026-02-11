@@ -1,0 +1,49 @@
+.sectionAxes {
+    padding: 60px 20px;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+.titreSectionAxes {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    font-weight: 700;
+    color: #1e90ff;
+}
+
+.containerAxes {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.axeCard {
+    background-color: #fff;
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 280px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.axeCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.iconeAxe {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.axeCard h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+.axeCard p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #555;
+}

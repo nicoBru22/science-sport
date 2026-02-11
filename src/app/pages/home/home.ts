@@ -1,8 +1,12 @@
 import { Component } from '@angular/core';
+import { SectionHero } from "../../composant/section-hero/section-hero";
+import { SectionAxes } from "../../composant/section-axes/section-axes";
+import { SectionAPropos } from "../../composant/section-apropos/section-apropos";
+import { SectionLastArticles } from "../../composant/section-last-articles/section-last-articles";
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [SectionHero, SectionAxes, SectionAPropos, SectionLastArticles],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
