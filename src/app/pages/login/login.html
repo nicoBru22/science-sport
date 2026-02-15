@@ -1,0 +1,30 @@
+<section class="sectionLogin">
+  <div class="headerLogin">
+    <h1>Connexion</h1>
+    <p>Accédez à votre espace Science et Sport</p>
+  </div>
+
+  <form class="formLogin" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+    <div class="formGroup">
+      <label for="inputNomUtilisateur">Nom de l'utilisateur</label>
+      <input id="inputNomUtilisateur" type="text" formControlName="username" placeholder="Votre identifiant">
+      <small *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched" class="errorText">
+        L'identifiant est invalide (min {{USER_RULES.MIN_USERNAME}} caractères).
+      </small>
+    </div>
+
+    <div class="formGroup">
+      <label for="inputPassword">Mot de passe</label>
+      <input id="inputPassword" type="password" formControlName="password" placeholder="Votre mot de passe">
+      <small *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="errorText">
+        Le mot de passe doit être complexe.
+      </small>
+    </div>
+
+    <p *ngIf="errorMessage" class="mainError">{{ errorMessage }}</p>
+
+    <button class="btnSubmit" type="submit" [disabled]="loginForm.invalid">Se connecter</button>
+
+  </form>
+</section>

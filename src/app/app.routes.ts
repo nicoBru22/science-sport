@@ -5,6 +5,8 @@ import { Contact } from './pages/contact/contact';
 import { APropos } from './pages/a-propos/a-propos';
 import { Article } from './pages/article/article';
 import { AjouterArticle } from './pages/ajouter-article/ajouter-article';
+import { Login } from './pages/login/login';
+import { CreerCompte } from './pages/creer-compte/creer-compte';
 
 export const routes: Routes = [
     {
@@ -26,6 +28,16 @@ export const routes: Routes = [
         path: 'contact',
         component: Contact,
         title: "Contact"
+    },
+    {
+        path: 'login',
+        component: Login,
+        title: "Se connecter"
+    },
+        {
+        path: 'creerCompte',
+        component: CreerCompte,
+        title: "Creer un compte"
     },
     {
         path: 'article/ajouter',

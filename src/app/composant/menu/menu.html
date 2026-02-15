@@ -7,17 +7,29 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="'home'">Accueil</a>                
+          <a class="nav-link" [routerLink]="'home'">Accueil</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" [routerLink]="'blog'">Blog</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" [routerLink]="'a-propos'">A propos</a>
-        </li>    
+        </li>
         <li class="nav-item">
           <a class="nav-link" [routerLink]="'contact'">Contact</a>
-        </li>        
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn btn-outline-primary ms-2 px-3"
+             routerLink="/login">
+            Connexion
+          </a>
+        </li>
+                <li class="nav-item">
+          <a class="nav-link btn btn-outline-primary ms-2 px-3"
+             routerLink="/creerCompte">
+            Creer un compte
+          </a>
+        </li>
       </ul>
     </div>
   </div>

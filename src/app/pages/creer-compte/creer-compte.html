@@ -1,0 +1,37 @@
+<div class="auth-container">
+  <h2>Créer un compte</h2>
+
+  <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+    <div class="form-group">
+      <label for="username">Nom d'utilisateur</label>
+      <input 
+        type="text" 
+        id="username" 
+        formControlName="username">
+      
+      @if (registerForm.get('username')?.invalid && registerForm.get('username')?.touched) {
+        <small class="error-text">
+          Le pseudo doit faire au moins 8 caractères.
+        </small>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="password">Mot de passe</label>
+      <input 
+        type="password" 
+        id="password" 
+        formControlName="password">
+    </div>
+
+    <button type="submit" [disabled]="registerForm.invalid">S'inscrire</button>
+  </form>
+
+  @if (errorMessage) {
+    <p class="error-msg">{{ errorMessage }}</p>
+  }
+
+  <div class="footer-link">
+    <p>Déjà un compte ? <a routerLink="/login">Connectez-vous ici</a></p>
+  </div>
+</div>
