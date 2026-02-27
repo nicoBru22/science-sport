@@ -9,7 +9,7 @@ import { UserService } from "./userService"; // Ton interface
 })
 export class UserServerService implements UserService {
   private readonly http = inject(HttpClient);
-  private readonly AUTH_API_URL = "http://architectural-ailina-sportscience-46093043.koyeb.app/api/auth";
+  private readonly AUTH_API_URL = "https://architectural-ailina-sportscience-46093043.koyeb.app/api/auth";
 
   private loggedInSubject = new BehaviorSubject<boolean>(false);
   loggedIn$ = this.loggedInSubject.asObservable();
