@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { USER_RULES } from '../../model/userModel';
 import { UserService } from '../../service/userService';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +19,7 @@ export class Login {
 
   // On injecte le service ici
   readonly #userService = inject(UserService);
+  private readonly router = inject(Router);
 
   constructor(private fb: FormBuilder) {
     this.loginForm = this.fb.group({
@@ -44,7 +46,7 @@ export class Login {
       this.#userService.login(credentials).subscribe({
         next: (response) => {
           console.log('Réponse du serveur (Succès) :', response);
-          // Ici tu pourras rediriger vers /articles
+          this.router.navigate(['/home']);
         },
         error: (err) => {
           console.error('Erreur réseau ou auth :', err);
