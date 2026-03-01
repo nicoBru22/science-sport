@@ -29,3 +29,11 @@ export const ARTICLE_RULES = {
   MAX_TITRE: 20,
   MIN_TITRE: 5,
 }
+
+export enum CategorieArticle {
+  Physiologie = 'Physiologie',
+  Biomecanique = 'Biomécanique',
+  Nutrition = 'Nutrition',
+  Psychologie = 'Psychologie du sport',
+  Entrainement = 'Entraînement',
+}

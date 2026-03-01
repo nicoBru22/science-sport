@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { ArticleService } from '../../service/articleService';
 import { Router } from '@angular/router';
-import { ARTICLE_RULES, Article } from '../../model/articleModel';
+import { ARTICLE_RULES, Article, CategorieArticle } from '../../model/articleModel';
 import { FormControl, FormGroup, FormArray, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
@@ -17,6 +17,7 @@ export class FormAjouterArticle {
   readonly articleService = inject(ArticleService);
   readonly router = inject(Router);
   readonly articleRules = signal(ARTICLE_RULES).asReadonly();
+  readonly categories = Object.values(CategorieArticle);
   
   imagePreview = signal<string | null>(null);
 

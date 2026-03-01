@@ -32,8 +32,8 @@
 
     <!-- Introduction dynamique -->
     <section class="articleSection">
-      <h2>{{ item.introduction?.sousTitre }}</h2>
-      <p>{{ item.introduction?.texte }}</p>
+      <h2>{{ item.introduction.sousTitre }}</h2>
+      <p>{{ item.introduction.texte }}</p>
     </section>
 
     <!-- Sections dynamiques -->
@@ -44,12 +44,12 @@
 
     <!-- Conclusion dynamique -->
     <section class="articleSection conclusion">
-      <h2>{{ item.conclusion?.sousTitre }}</h2>
-      <p>{{ item.conclusion?.texte }}</p>
+      <h2>{{ item.conclusion.sousTitre }}</h2>
+      <p>{{ item.conclusion.texte }}</p>
     </section>
 
     <!-- Références dynamiques -->
-    <section class="articleSection references" *ngIf="item.references?.length">
+    <section class="articleSection references" *ngIf="item.references.length">
       <h2>Références</h2>
       <ul>
         <li *ngFor="let ref of item.references">{{ ref }}</li>
