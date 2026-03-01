@@ -1,9 +1,12 @@
 <div class="parallax-container" [style.height]="height">
   <div class="parallax-mirror">
-    <img [src]="image" 
-         alt="Illustration Sport Science" 
-         class="parallax-img" 
-         loading="lazy">
+<img
+  [src]="image"
+  alt="Illustration Sport Science"
+  class="parallax-img"
+  [attr.loading]="priority ? null : 'lazy'"
+  [attr.fetchpriority]="priority ? 'high' : null"
+  decoding="async">
   </div>
   <div class="parallax-overlay"></div>
   

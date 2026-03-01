@@ -10,4 +10,5 @@ import { Component, Input } from '@angular/core';
 export class Parallax {
   @Input({ required: true }) image!: string;
   @Input() height: string = '350px';
+  @Input() priority: boolean = false;
 }
