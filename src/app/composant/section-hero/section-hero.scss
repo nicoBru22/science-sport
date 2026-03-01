@@ -48,13 +48,14 @@
 }
 
 .btnBlog, .btnDernierArticle {
+  display: inline-block;        /* important pour <a> */
+  text-decoration: none;        /* enlève le soulignement */
   padding: 15px 30px;
   font-size: 1rem;
   font-weight: 600;
-  border: none;
-  cursor: pointer;
   border-radius: 8px;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 /* Bouton principal */
