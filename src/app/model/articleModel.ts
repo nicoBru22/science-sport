@@ -2,6 +2,7 @@ export interface Article {
   id?: string;
   titre: string;
   categorie: string;
+  dateCreation: Date;
 
   introduction: {
     sousTitre: string;

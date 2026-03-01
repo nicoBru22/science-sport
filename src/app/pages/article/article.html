@@ -1,52 +1,62 @@
-@if (error()) {
-  <div class="errorContainer">
-    <p>Une erreur est survenue lors du chargement de l'article.</p>
-  </div>
-}
+<!-- Gestion des erreurs -->
+<div *ngIf="error()" class="errorContainer">
+  <p>Une erreur est survenue lors du chargement de l'article.</p>
+</div>
 
-@else if (article(); as item) {
+<!-- Article -->
+<ng-container *ngIf="article() as item; else loading">
 
   <article class="articleContainer">
 
+    <!-- Header -->
     <header class="articleHeader">
       <span class="badgeCategorie">{{ item.categorie }}</span>
       <h1>{{ item.titre }}</h1>
       <p class="dateArticle">
-        Publié le {{ item.dateCreation }}
+        Publié le {{ item.dateCreation | date:'dd/MM/yyyy' }}
       </p>
+      <!-- Lien scientifique s'il existe -->
+      <ng-container *ngIf="item.lienArticle">
+        <p class="lienArticle">
+          <a [href]="item.lienArticle" target="_blank" rel="noopener noreferrer">
+            Lire l'article scientifique
+          </a>
+        </p>
+      </ng-container>
     </header>
 
-    @if (item.imageBase64) {
-      <div class="imageContainer">
-        <img [src]="item.imageBase64" class="imgArticle" alt="image de l'article">
-      </div>
-    }
+    <!-- Image -->
+    <div *ngIf="item.imageBase64" class="imageContainer">
+      <img [src]="item.imageBase64" class="imgArticle" alt="image de l'article">
+    </div>
 
+    <!-- Introduction dynamique -->
     <section class="articleSection">
-      <h2>{{ item.stIntroArticle }}</h2>
-      <p>{{ item.texteIntroArticle }}</p>
+      <h2>{{ item.introduction?.sousTitre }}</h2>
+      <p>{{ item.introduction?.texte }}</p>
     </section>
 
-    <section class="articleSection">
-      <h3>{{ item.st1Article }}</h3>
-      <p>{{ item.texte1Article }}</p>
+    <!-- Sections dynamiques -->
+    <section class="articleSection" *ngFor="let sec of item.sections">
+      <h3>{{ sec.sousTitre }}</h3>
+      <p>{{ sec.texte }}</p>
     </section>
 
-    <section class="articleSection">
-      <h3>{{ item.st2Article }}</h3>
-      <p>{{ item.texte2Article }}</p>
-    </section>
-
-    <section class="articleSection">
-      <h3>{{ item.st3Article }}</h3>
-      <p>{{ item.texte3Article }}</p>
-    </section>
-
+    <!-- Conclusion dynamique -->
     <section class="articleSection conclusion">
-      <h2>{{ item.stConclusionArticle }}</h2>
-      <p>{{ item.texteConclusionArticle }}</p>
+      <h2>{{ item.conclusion?.sousTitre }}</h2>
+      <p>{{ item.conclusion?.texte }}</p>
     </section>
 
+    <!-- Références dynamiques -->
+    <section class="articleSection references" *ngIf="item.references?.length">
+      <h2>Références</h2>
+      <ul>
+        <li *ngFor="let ref of item.references">{{ ref }}</li>
+      </ul>
+    </section>
+
+    <!-- Actions -->
     <div class="articleActions">
       <button class="btnDelete" (click)="deleteArticle()">
         Supprimer
@@ -59,10 +69,11 @@
 
   </article>
 
-}
+</ng-container>
 
-@else {
+<!-- Loading -->
+<ng-template #loading>
   <div class="loadingContainer">
     <p>Chargement en cours...</p>
   </div>
-}
+</ng-template>
