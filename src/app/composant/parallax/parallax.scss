@@ -44,7 +44,6 @@
   z-index: 1;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
   
-  // Pour s'assurer que le contenu passé via ng-content est bien stylisé
   ::ng-deep h1 {
     font-size: 2.5rem;
     font-weight: bold;
