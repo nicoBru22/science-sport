@@ -96,7 +96,16 @@
           }
         },
         "deploy": {
-          "builder": "angular-cli-ghpages:deploy"
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "/science-sport/",
+            "noSilent": true
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "sport-science:build:production"
+            }
+          }
         }
       }
     }
