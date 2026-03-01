@@ -1,112 +1,142 @@
-/* Hero général */
+/* Hero général - Fond clair */
 .heroSection {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  padding: 40px 20px;
-  height: 80vh;
-  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)),
-              url('https://images.unsplash.com/photo-1558611848-73f7eb4001d5?auto=format&fit=crop&w=1470&q=80') no-repeat center center;
-  background-size: cover;
-  color: #fff;
-  overflow: hidden;
+  min-height: 75vh; /* Légèrement augmenté pour accueillir le grand logo */
+  padding: 80px 20px; /* Plus d'espace en haut et en bas */
+  background-color: #ffffff;
+  color: #212529;
 }
 
+/* Conteneur principal */
 .heroContent {
-  max-width: 900px;
+  width: 100%;
+  max-width: 1200px; /* Élargi pour un meilleur rendu horizontal */
+  display: flex;
+  flex-direction: column;
+  gap: 50px; /* Plus d'espace avant les boutons */
   animation: fadeInUp 1s ease forwards;
-  opacity: 0;
-  transform: translateY(20px);
 }
 
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Alignement Logo Gauche / Texte Droite */
+.heroTop {
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* Centre verticalement le logo face au bloc de texte */
+  gap: 80px; /* Espace généreux entre le logo et le texte */
+  text-align: left;
 }
 
-/* Logo */
+/* --- MODIFICATION ICI : Logo beaucoup plus grand --- */
 .heroLogo img {
-  width: 120px;
-  margin-bottom: 20px;
+  width: 350px; /* Augmenté de 220px à 350px */
+  height: auto; /* Conserve les proportions */
+  display: block;
+  /* Optionnel : ajoute une ombre légère si ton logo est clair */
+  /* filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); */
 }
 
-/* Titres */
+/* Bloc de texte */
+.heroText {
+  flex: 1; /* Prend tout l'espace restant */
+}
+
 .heroTitle {
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 20px;
-  line-height: 1.2;
+  font-size: 3.5rem; /* Un peu plus grand pour équilibrer avec le logo */
+  font-weight: 800;
+  color: #0d6efd;
+  margin: 0 0 20px 0;
+  line-height: 1.1;
 }
 
 .heroSubtitle {
-  font-size: 1.3rem;
+  font-size: 1.5rem; /* Un peu plus grand pour la lisibilité */
   font-weight: 400;
-  margin: 0 auto 30px;
-  line-height: 1.5;
+  margin-bottom: 20px;
+  color: #495057;
+  line-height: 1.6;
 }
 
 .heroTagline {
-  font-size: 1rem;
-  max-width: 700px;
-  margin: 10px auto 30px;
+  font-size: 1.1rem;
   font-style: italic;
-  color: #f0f0f0;
+  color: #6c757d;
 }
 
-/* Boutons */
+/* Boutons adaptés au fond clair */
 .heroButtons {
   display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
+  gap: 25px;
   justify-content: center;
 }
 
 .btnPrimary, .btnSecondary {
-  display: inline-block;
-  text-decoration: none;
-  padding: 15px 30px;
-  font-size: 1rem;
-  font-weight: 600;
+  padding: 16px 35px; /* Boutons légèrement plus généreux */
   border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
   transition: all 0.3s ease;
-  cursor: pointer;
 }
 
 .btnPrimary {
-  background-color: #1e90ff;
-  color: #fff;
+  background-color: #0d6efd;
+  color: white;
+  border: 1px solid #0d6efd;
 }
 
 .btnPrimary:hover {
-  background-color: #0077cc;
+  background-color: #0a58ca;
   transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(13, 110, 253, 0.2);
 }
 
 .btnSecondary {
   background-color: transparent;
-  color: #fff;
-  border: 2px solid #fff;
+  color: #0d6efd;
+  border: 2px solid #0d6efd;
 }
 
 .btnSecondary:hover {
-  background-color: #fff;
-  color: #1e90ff;
+  background-color: #f8f9fa;
   transform: translateY(-3px);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .heroTitle { font-size: 2.2rem; }
-  .heroSubtitle { font-size: 1rem; }
-  .heroButtons { flex-direction: column; gap: 15px; }
+/* Animation */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-@media (max-width: 480px) {
-  .heroTitle { font-size: 1.8rem; }
-  .heroSubtitle { font-size: 0.9rem; }
-  .heroTagline { font-size: 0.9rem; }
-  .heroButtons { gap: 10px; }
+/* Responsive (Crucial pour un grand logo) */
+@media (max-width: 1100px) {
+  .heroTop { gap: 40px; }
+  .heroLogo img { width: 280px; } /* On réduit un peu avant de basculer */
+  .heroTitle { font-size: 2.8rem; }
+}
+
+@media (max-width: 992px) {
+  .heroTop {
+    flex-direction: column; /* Bascule en colonne sur tablette/mobile */
+    text-align: center;
+    gap: 30px;
+  }
+  .heroLogo img { 
+    width: 220px; /* Taille raisonnable pour mobile */
+    margin: 0 auto; 
+  }
+  .heroTitle { font-size: 2.4rem; }
+  .heroSubtitle { font-size: 1.3rem; }
+}
+
+@media (max-width: 576px) {
+  .heroButtons {
+    flex-direction: column;
+    width: 100%;
+  }
+  .btnPrimary, .btnSecondary {
+    width: 100%;
+    text-align: center;
+  }
 }
