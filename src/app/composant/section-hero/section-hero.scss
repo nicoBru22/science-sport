@@ -1,55 +1,72 @@
-.accrocheHero {
-    font-size: 1rem;
-    max-width: 700px;
-    margin: 10px auto 30px auto;
-    font-style: italic;
-    color: #f0f0f0;
-}
-
-
 /* Hero général */
-.containerSectionHero {
+.heroSection {
   display: flex;
-  flex-direction: column; /* sur mobile on passe en colonne */
   justify-content: center;
   align-items: center;
   text-align: center;
   padding: 40px 20px;
-  height: 80vh; /* presque tout l'écran */
+  height: 80vh;
   background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)),
               url('https://images.unsplash.com/photo-1558611848-73f7eb4001d5?auto=format&fit=crop&w=1470&q=80') no-repeat center center;
   background-size: cover;
   color: #fff;
+  overflow: hidden;
 }
 
-/* Titre */
-.titreSectionHero {
+.heroContent {
+  max-width: 900px;
+  animation: fadeInUp 1s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Logo */
+.heroLogo img {
+  width: 120px;
+  margin-bottom: 20px;
+}
+
+/* Titres */
+.heroTitle {
   font-size: 3rem;
   font-weight: 700;
   margin-bottom: 20px;
   line-height: 1.2;
 }
 
-/* Sous-titre */
-.soustitreSectionHero {
+.heroSubtitle {
   font-size: 1.3rem;
   font-weight: 400;
-  max-width: 800px;
-  margin: 0 auto 30px auto;
+  margin: 0 auto 30px;
   line-height: 1.5;
 }
 
+.heroTagline {
+  font-size: 1rem;
+  max-width: 700px;
+  margin: 10px auto 30px;
+  font-style: italic;
+  color: #f0f0f0;
+}
+
 /* Boutons */
-.containerButtonSectionHero {
+.heroButtons {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.btnBlog, .btnDernierArticle {
-  display: inline-block;        /* important pour <a> */
-  text-decoration: none;        /* enlève le soulignement */
+.btnPrimary, .btnSecondary {
+  display: inline-block;
+  text-decoration: none;
   padding: 15px 30px;
   font-size: 1rem;
   font-weight: 600;
@@ -58,40 +75,38 @@
   cursor: pointer;
 }
 
-/* Bouton principal */
-.btnBlog {
-  background-color: #1e90ff; /* bleu vif */
+.btnPrimary {
+  background-color: #1e90ff;
   color: #fff;
 }
 
-.btnBlog:hover {
+.btnPrimary:hover {
   background-color: #0077cc;
   transform: translateY(-3px);
 }
 
-/* Bouton secondaire */
-.btnDernierArticle {
+.btnSecondary {
   background-color: transparent;
   color: #fff;
   border: 2px solid #fff;
 }
 
-.btnDernierArticle:hover {
+.btnSecondary:hover {
   background-color: #fff;
   color: #1e90ff;
   transform: translateY(-3px);
 }
 
-/* Responsive mobile */
+/* Responsive */
 @media (max-width: 768px) {
-  .titreSectionHero {
-    font-size: 2.2rem;
-  }
-  .soustitreSectionHero {
-    font-size: 1rem;
-  }
-  .containerButtonSectionHero {
-    flex-direction: column;
-    gap: 15px;
-  }
+  .heroTitle { font-size: 2.2rem; }
+  .heroSubtitle { font-size: 1rem; }
+  .heroButtons { flex-direction: column; gap: 15px; }
+}
+
+@media (max-width: 480px) {
+  .heroTitle { font-size: 1.8rem; }
+  .heroSubtitle { font-size: 0.9rem; }
+  .heroTagline { font-size: 0.9rem; }
+  .heroButtons { gap: 10px; }
 }
