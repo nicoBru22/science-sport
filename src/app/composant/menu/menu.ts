@@ -18,7 +18,7 @@ export class Menu implements OnInit {
 
   // 2. On garde l'observable pour le pipe async, 
   // MAIS on ajoute un abonnement manuel pour forcer la détection
-  isLoggedIn$ = this.userService.loggedIn$;
+  isLoggedIn$ = this.userService.loggedIn$; 
 
   ngOnInit() {
     console.log("[Menu] Initialisation et écoute du statut...");

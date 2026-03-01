@@ -12,47 +12,47 @@ export const routes: Routes = [
     {
         path: 'home',
         component: Home,
-        title: "Home"
+        title: "SportScience | Accueil"
     },
     {
         path: 'blog',
         component: Blog,
-        title: "Blog"
+        title: "SportScience | Blog"
     },
         {
         path: 'a-propos',
         component: APropos,
-        title: "A propos"
+        title: "Sport Science | A propos"
     },
     {
         path: 'contact',
         component: Contact,
-        title: "Contact"
+        title: "Sport Science | Contact"
     },
     {
         path: 'login',
         component: Login,
-        title: "Se connecter"
+        title: "Sport Science | Se connecter"
     },
         {
         path: 'creerCompte',
         component: CreerCompte,
-        title: "Creer un compte"
+        title: "Sport Science | Creer un compte"
     },
     {
         path: 'article/ajouter',
         component: AjouterArticle,
-        title: "ajouter un nouvel article"
+        title: "Sport Science | Ajouter un article"
     },
     {
         path: 'article/:id',
         component: Article,
-        title: "article"
+        title: "Sport Science | Article"
     },
     {
         path: '',
         redirectTo: 'home',
         pathMatch: 'full',
-        title: "Home"
+        title: "Sport Science | Accueil"
     }
 ];
