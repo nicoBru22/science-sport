@@ -1,8 +1,13 @@
-<div
-  class="parallax"
-  [style.backgroundImage]="'url(\'' + image + '\')'"
->
-  <div class="content">
+<div class="parallax-container" [style.height]="height">
+  <div class="parallax-mirror">
+    <img [src]="image" 
+         alt="Illustration Sport Science" 
+         class="parallax-img" 
+         loading="lazy">
+  </div>
+  <div class="parallax-overlay"></div>
+  
+  <div class="parallax-content">
     <ng-content></ng-content>
   </div>
 </div>
