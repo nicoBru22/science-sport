@@ -25,8 +25,8 @@ export interface Article {
 }
 
 export const ARTICLE_RULES = {
-  PATTERN: /^[a-zA-Z0-9](.*[a-zA-Z0-9])?$/,
-  MAX_TITRE: 20,
+  PATTERN: /^[\p{L}0-9][\p{L}0-9\s’'()-]{3,98}[\p{L}0-9]$/u,
+  MAX_TITRE: 100,
   MIN_TITRE: 5,
 }
 
