@@ -7,6 +7,7 @@ import { Article } from './pages/article/article';
 import { AjouterArticle } from './pages/ajouter-article/ajouter-article';
 import { Login } from './pages/login/login';
 import { CreerCompte } from './pages/creer-compte/creer-compte';
+import { ModifierArticle } from './pages/modifier-article/modifier-article';
 
 export const routes: Routes = [
     {
@@ -43,6 +44,10 @@ export const routes: Routes = [
         path: 'article/ajouter',
         component: AjouterArticle,
         title: "Sport Science | Ajouter un article"
+    },
+    {   path: 'article/modifier/:id',
+        component: ModifierArticle,
+        title: "Sport Science | Modifier un article"
     },
     {
         path: 'article/:id',

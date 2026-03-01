@@ -1,0 +1,119 @@
+<section class="sectionFormArticle">
+
+  <div class="headerForm">
+    <h1>Modifier l'article</h1>
+    <p>Modifier un article de vulgarisation scientifique en sciences du sport.</p>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="formArticle">
+
+    <!-- Infos générales -->
+    <div class="formCard">
+      <h2>Informations générales</h2>
+
+      <div class="formGroup">
+        <label for="titre">Titre</label>
+        <input type="text" id="titre" formControlName="titre">
+      </div>
+
+      <div class="formGroup">
+        <label for="categorie">Catégorie</label>
+        <select id="categorie" formControlName="categorie">
+          <option value="" disabled>Choisir une catégorie</option>
+          <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Introduction -->
+    <div class="formCard" [formGroup]="introduction">
+      <h2>Introduction</h2>
+
+      <div class="formGroup">
+        <label for="stIntroArticle">Sous-titre</label>
+        <input type="text" id="stIntroArticle" formControlName="sousTitre">
+      </div>
+
+      <div class="formGroup">
+        <label for="texteIntroArticle">Texte</label>
+        <textarea id="texteIntroArticle" formControlName="texte" rows="5"></textarea>
+      </div>
+    </div>
+
+    <!-- Sections dynamiques -->
+    <div class="formCard" *ngFor="let section of sectionFormGroups; let i = index" [formGroup]="section">
+      <h2>Section {{ i + 1 }}</h2>
+
+      <div class="formGroup">
+        <label [for]="'stSection' + i">Sous-titre</label>
+        <input [id]="'stSection' + i" formControlName="sousTitre">
+      </div>
+
+      <div class="formGroup">
+        <label [for]="'texteSection' + i">Texte</label>
+        <textarea [id]="'texteSection' + i" formControlName="texte" rows="5"></textarea>
+      </div>
+
+      <button type="button" (click)="removeSection(i)">Supprimer cette section</button>
+    </div>
+
+    <button type="button" (click)="addSection()">Ajouter une section</button>
+
+    <!-- Conclusion -->
+    <div class="formCard" [formGroup]="conclusion">
+      <h2>Conclusion</h2>
+
+      <div class="formGroup">
+        <label for="stConclusionArticle">Sous-titre</label>
+        <input type="text" id="stConclusionArticle" formControlName="sousTitre">
+      </div>
+
+      <div class="formGroup">
+        <label for="texteConclusionArticle">Texte</label>
+        <textarea id="texteConclusionArticle" formControlName="texte" rows="5"></textarea>
+      </div>
+    </div>
+
+    <!-- Lien vers l'article scientifique -->
+    <div class="formCard">
+      <h2>Lien scientifique</h2>
+      <div class="formGroup">
+        <label for="lienArticle">URL</label>
+        <input type="url" id="lienArticle" formControlName="lienArticle" placeholder="https://exemple.com/article">
+      </div>
+    </div>
+
+  <!-- Références dynamiques -->
+  <div class="formCard">
+    <h2>Références</h2>
+
+  <div class="formGroup" *ngFor="let refCtrl of referenceFormControls; let i = index">
+    <label [for]="'ref' + i">Référence {{ i + 1 }}</label>
+    <input [id]="'ref' + i" [formControl]="refCtrl" placeholder="Nom de l'auteur, titre, journal, année">
+    <button type="button" (click)="removeReference(i)">Supprimer</button>
+  </div>
+
+    <button type="button" (click)="addReference()">Ajouter une référence</button>
+  </div>
+
+    <!-- Image -->
+    <div class="formCard">
+      <h2>Vignette</h2>
+
+      <input type="file"
+             id="image"
+             (change)="onFileChange($event)"
+             accept="image/*">
+
+      <div class="previewContainer" *ngIf="imagePreview()">
+        <img [src]="imagePreview()" class="imagePreview">
+      </div>
+    </div>
+
+    <button type="submit" class="btnSubmit" [disabled]="form.invalid">
+      Publier l’article
+    </button>
+
+  </form>
+
+</section>

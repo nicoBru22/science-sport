@@ -58,6 +58,9 @@
 
     <!-- Actions -->
     <div class="articleActions">
+      <button class="btnModif" [routerLink]="['/article/modifier', item.id]">
+        Modifier
+      </button>
       <button class="btnDelete" (click)="deleteArticle()">
         Supprimer
       </button>

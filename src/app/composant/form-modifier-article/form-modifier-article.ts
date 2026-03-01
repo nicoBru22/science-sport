@@ -1,18 +1,17 @@
 import { Component, inject, signal } from '@angular/core';
-import { ArticleService } from '../../service/articleService';
+import { FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ARTICLE_RULES, Article, CategorieArticle } from '../../model/articleModel';
-import { FormControl, FormGroup, FormArray, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Article, ARTICLE_RULES, CategorieArticle } from '../../model/articleModel';
+import { ArticleService } from '../../service/articleService';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-form-ajouter-article',
-  standalone: true,
+  selector: 'app-form-modifier-article',
   imports: [ReactiveFormsModule, CommonModule],
-  templateUrl: './form-ajouter-article.html',
-  styleUrls: ['./form-ajouter-article.scss'],
+  templateUrl: './form-modifier-article.html',
+  styleUrl: './form-modifier-article.scss',
 })
-export class FormAjouterArticle {
+export class FormModifierArticle {
 
   readonly articleService = inject(ArticleService);
   readonly router = inject(Router);
