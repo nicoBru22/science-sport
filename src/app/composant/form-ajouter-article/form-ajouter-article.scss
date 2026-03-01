@@ -1,11 +1,16 @@
+/* Container principal */
 .sectionFormArticle {
   max-width: 900px;
   margin: 80px auto;
   padding: 0 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
 }
 
+/* Header du formulaire */
 .headerForm {
   margin-bottom: 40px;
+  text-align: center;
 }
 
 .headerForm h1 {
@@ -15,27 +20,38 @@
 
 .headerForm p {
   color: #666;
+  font-size: 1rem;
 }
 
+/* Formulaire principal */
 .formArticle {
   display: flex;
   flex-direction: column;
   gap: 40px;
 }
 
+/* Cartes individuelles */
 .formCard {
-  background: white;
+  background: #fff;
   padding: 30px;
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
+.formCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+}
+
+/* Titres des cartes */
 .formCard h2 {
   margin-bottom: 20px;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   color: #2c5364;
 }
 
+/* Groupes de champs */
 .formGroup {
   display: flex;
   flex-direction: column;
@@ -47,14 +63,20 @@ label {
   font-weight: 500;
 }
 
+/* Inputs et textarea */
 input,
 textarea {
-  padding: 12px;
+  padding: 12px 14px;
   border-radius: 8px;
   border: 1px solid #ddd;
   font-family: inherit;
   font-size: 0.95rem;
-  transition: 0.2s;
+  transition: 0.25s;
+}
+
+input:hover,
+textarea:hover {
+  border-color: #bbb;
 }
 
 input:focus,
@@ -64,23 +86,31 @@ textarea:focus {
   box-shadow: 0 0 0 3px rgba(44,83,100,0.1);
 }
 
+/* Prévisualisation de l'image */
 .previewContainer {
   margin-top: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .imagePreview {
   width: 150px;
+  height: auto;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  object-fit: cover;
 }
 
+/* Bouton de soumission */
 .btnSubmit {
   padding: 14px;
   background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  color: white;
+  color: #fff;
   border: none;
   border-radius: 10px;
   font-size: 1rem;
+  font-weight: 500;
   cursor: pointer;
   transition: 0.3s;
 }
@@ -93,4 +123,19 @@ textarea:focus {
 .btnSubmit:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .sectionFormArticle {
+    padding: 0 15px;
+  }
+
+  .formCard {
+    padding: 20px;
+  }
+
+  .formCard h2 {
+    font-size: 1.2rem;
+  }
 }

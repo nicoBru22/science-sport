@@ -1,30 +1,30 @@
 export interface Article {
-    id?: string,
-    titre: string,
-    categorie: string,
+  id?: string;
+  titre: string;
+  categorie: string;
 
-    stIntroArticle: string;
-    texteIntroArticle: string;
-    
-    st1Article: string;
-    texte1Article: string;
-    
-    st2Article: string;
-    texte2Article: string;
-    
-    st3Article: string;
-    texte3Article: string;
-    
-    stConclusionArticle: string;
-    texteConclusionArticle: string;
+  introduction: {
+    sousTitre: string;
+    texte: string;
+  };
 
-    imageBase64?: string | null;
+  sections: {
+    sousTitre: string;
+    texte: string;
+  }[];
 
-    dateCreation: Date;
+  conclusion: {
+    sousTitre: string;
+    texte: string;
+  };
+
+  references: string[];
+  lienArticle: string;
+  imageBase64?: string | null;
 }
 
 export const ARTICLE_RULES = {
-    PATTERN: /^[a-zA-Z0-9](.*[a-zA-Z0-9])?$/,
-    MAX_TITRE: 20,
-    MIN_TITRE: 5,
+  PATTERN: /^[a-zA-Z0-9](.*[a-zA-Z0-9])?$/,
+  MAX_TITRE: 20,
+  MIN_TITRE: 5,
 }
