@@ -29,14 +29,14 @@
           <li class="nav-item">
             <a class="nav-link btn btn-link text-light me-2" routerLink="/login">Connexion</a>
           </li>
-          <li class="nav-item">
-            <a class="btn btn-primary px-4 rounded-pill shadow-sm" routerLink="/creerCompte">S'inscrire</a>
-          </li>
         }
 
         @if (isLoggedIn$ | async) {
           <li class="nav-item me-3">
             <span class="text-white-50 small">Bienvenue !</span>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-primary px-4 rounded-pill shadow-sm" routerLink="/creerCompte">Ajouter Utilisateur</a>
           </li>
           <li class="nav-item">
             <button class="btn btn-outline-danger btn-sm px-3" (click)="logout()">
