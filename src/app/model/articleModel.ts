@@ -27,7 +27,7 @@ export interface Article {
 export const ARTICLE_RULES = {
   PATTERN: /^[\p{L}0-9][\p{L}0-9\s’'()-]{3,98}[\p{L}0-9]$/u,
   MAX_TITRE: 100,
-  MIN_TITRE: 5,
+  MIN_TITRE: 3,
 }
 
 export enum CategorieArticle {
