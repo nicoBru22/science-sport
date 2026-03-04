@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Article, ARTICLE_RULES, CategorieArticle } from '../../model/articleModel';
 import { ArticleService } from '../../service/articleService';
 import { CommonModule } from '@angular/common';
@@ -13,15 +13,18 @@ import { CommonModule } from '@angular/common';
 })
 export class FormModifierArticle {
 
+  readonly route = inject(ActivatedRoute);
   readonly articleService = inject(ArticleService);
   readonly router = inject(Router);
   readonly articleRules = signal(ARTICLE_RULES).asReadonly();
   readonly categories = Object.values(CategorieArticle);
+  existingArticle!: Article; // déclaration
   
   imagePreview = signal<string | null>(null);
 
   // Formulaire principal
   readonly form = new FormGroup({
+    id: new FormControl('', { nonNullable: true }),
     titre: new FormControl('', {
       nonNullable: true,
       validators: [
@@ -51,7 +54,7 @@ export class FormModifierArticle {
       validators: [Validators.required, Validators.pattern(/https?:\/\/.+/)] // validation URL simple
     }),
     
-    imageBase64: new FormControl('') // vignette
+    imageBase64: new FormControl('')
   });
 
   // Getters
@@ -60,12 +63,12 @@ export class FormModifierArticle {
   get conclusion(): FormGroup { return this.form.get('conclusion') as FormGroup; }
   get references(): FormArray { return this.form.get('references') as FormArray; }
   // TS
-get sectionFormGroups(): FormGroup[] {
-  return this.sections.controls.map(ctrl => ctrl as FormGroup);
-}
-get referenceFormControls(): FormControl[] {
-  return this.references.controls.map(ctrl => ctrl as FormControl);
-}
+  get sectionFormGroups(): FormGroup[] {
+    return this.sections.controls.map(ctrl => ctrl as FormGroup);
+  }
+  get referenceFormControls(): FormControl[] {
+    return this.references.controls.map(ctrl => ctrl as FormControl);
+  }
 
   // Sections dynamiques
   addSection() {
@@ -107,14 +110,55 @@ get referenceFormControls(): FormControl[] {
   // Soumission
   onSubmit() {
     if (this.form.valid) {
-      const nouvelArticle = this.form.getRawValue() as unknown as Article;
-      this.articleService.addArticle(nouvelArticle).subscribe({
-        next: (articleCree) => {
-          console.log('Article créé avec succès ! ID:', articleCree.id);
+      const raw = this.form.getRawValue();
+
+      // Cast "brut" vers Article pour contourner la vérification des dates
+      const articleModifie = raw as unknown as Article;
+
+      this.articleService.updateArticle(articleModifie).subscribe({
+        next: () => {
+          console.log('Article modifié avec succès !');
           this.router.navigate(['/blog']);
         },
-        error: (err) => console.error('Erreur lors de la création :', err)
+        error: (err) => console.error('Erreur lors de la modification :', err)
       });
     }
   }
+
+  ngOnInit() {
+  const id = this.route.snapshot.paramMap.get('id');
+
+  if (id) {
+    this.articleService.getArticleById(id).subscribe(article => {
+
+      // Remplit les champs simples
+      this.form.patchValue({
+        id: article.id,
+        titre: article.titre,
+        categorie: article.categorie,
+        introduction: article.introduction,
+        conclusion: article.conclusion,
+        lienArticle: article.lienArticle,
+        imageBase64: article.imageBase64
+      });
+
+      // Sections
+      article.sections?.forEach(section => {
+        this.sections.push(new FormGroup({
+          sousTitre: new FormControl(section.sousTitre, { nonNullable: true }),
+          texte: new FormControl(section.texte, { nonNullable: true })
+        }));
+      });
+
+      // Références
+      article.references?.forEach(ref => {
+        this.references.push(new FormControl(ref, { nonNullable: true }));
+      });
+
+      if (article.imageBase64) {
+        this.imagePreview.set(article.imageBase64);
+      }
+    });
+  }
+}
 }

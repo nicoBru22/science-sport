@@ -30,4 +30,11 @@ export class ArticleJsonServerService implements ArticleService {
     deleteArticle(id: string): Observable<void> {
         return this.http.delete<void>(`${this.Article_API_URL}/${id}`);
     }
+
+    updateArticle(article: Article): Observable<Article> {
+        if (!article.id) {
+            throw new Error('Article id est requis pour la modification.');
+        }
+        return this.http.put<Article>(`${this.Article_API_URL}/${article.id}`, article);
+    }
 }
