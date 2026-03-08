@@ -1,0 +1,29 @@
+<section class="logos-section">
+  <div class="logos">
+    <div class="logo" (click)="toggle('cpsf')">
+      <img src="assets/logoCPSF.png" alt="CPSF">
+    </div>
+
+    <div class="logo" (click)="toggle('handisport')">
+      <img src="assets/LogoHandisport.png" alt="Handisport">
+    </div>
+
+    <div class="logo" (click)="toggle('sportadapte')">
+      <img src="assets/LogoSportAdapte.png" alt="Sport adapté">
+    </div>
+  </div>
+
+  @if (opened) {
+    <div class="info-container">
+      <div class="info-logo" [class.animate-logo]="animateLogo">
+        <img [src]="getLogo(opened).img" [alt]="getLogo(opened).name">
+      </div>
+
+      <div class="info-text" [class.animate-text]="animateText">
+        <h3>{{ getLogo(opened).name }}</h3>
+        <p>{{ getLogo(opened).text }}</p>
+        <a [href]="getLogo(opened).link" target="_blank">Visiter le site</a>
+      </div>
+    </div>
+  }
+</section>

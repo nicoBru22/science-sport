@@ -1,0 +1,77 @@
+/* Section globale */
+.logos-section {
+  max-width: 900px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+/* Ligne des logos */
+.logos {
+  display: flex;
+  justify-content: center;
+  gap: 40px; /* espace entre les logos */
+  margin-bottom: 40px;
+}
+
+.logo {
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.logo img {
+  width: 110px;
+}
+
+.logo:hover {
+  opacity: 0.7;
+}
+
+/* Bloc info */
+.info-container {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  background: #f8f8f8;
+  padding: 25px;
+  border-radius: 12px;
+}
+
+/* Animation de transparence */
+.info-logo,
+.info-text {
+  opacity: 0;
+}
+
+/* Animation de transparence plus lente */
+.animate-logo {
+  animation: logoFade 1.5s ease-out forwards;
+}
+
+.animate-text {
+  animation: textFade 1.5s ease-out forwards;
+  animation-delay: 1s; /* délai pour que le texte apparaisse après le logo */
+}
+
+/* Keyframes inchangées */
+@keyframes logoFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes textFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Optionnel : ajuster la taille du logo dans le bloc info */
+.info-logo img {
+  width: 90px;
+}
+
+/* Lien stylé */
+.info-text a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #0077cc;
+  font-weight: 600;
+}

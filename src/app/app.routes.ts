@@ -8,6 +8,7 @@ import { AjouterArticle } from './pages/ajouter-article/ajouter-article';
 import { Login } from './pages/login/login';
 import { CreerCompte } from './pages/creer-compte/creer-compte';
 import { ModifierArticle } from './pages/modifier-article/modifier-article';
+import { SportHandicap } from './pages/sport-handicap/sport-handicap';
 
 export const routes: Routes = [
     {
@@ -29,6 +30,11 @@ export const routes: Routes = [
         path: 'contact',
         component: Contact,
         title: "Sport Science | Contact"
+    },
+    {
+        path: 'handicap',
+        component: SportHandicap,
+        title: "Sport & Handicap"
     },
     {
         path: 'login',
