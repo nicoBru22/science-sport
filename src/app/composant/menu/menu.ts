@@ -1,6 +1,6 @@
-import { Component, inject, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectorRef, HostListener } from '@angular/core';
 import { Router, RouterLink } from "@angular/router";
-import { UserService } from '../../service/userService'; // Utilise l'interface !
+import { UserService } from '../../service/userService';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -11,33 +11,18 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./menu.scss'], 
 })
 export class Menu implements OnInit {
-  // 1. Injecter l'interface pour garantir le Singleton
   private readonly userService = inject(UserService);
   private readonly router = inject(Router);
   private readonly cdr = inject(ChangeDetectorRef);
 
-  // 2. On garde l'observable pour le pipe async, 
-  // MAIS on ajoute un abonnement manuel pour forcer la détection
-  isLoggedIn$ = this.userService.loggedIn$; 
+  isLoggedIn$ = this.userService.loggedIn$;
+
+  navbarHidden = false;
+  private lastScrollTop = 0;
 
   ngOnInit() {
-    console.log("[Menu] Initialisation et écoute du statut...");
-    
-    // 3. Cette souscription force Angular à réagir
-    this.userService.loggedIn$.subscribe(status => {
-      console.log("[Menu] Changement d'état détecté :", status);
-      // Force le rafraîchissement des composants "Standalone"
-      this.cdr.detectChanges(); 
-    });
-
-    this.checkLoginStatus();
-  }
-
-  checkLoginStatus() {
-    this.userService.getMe().subscribe({
-      next: (user) => console.log("[Menu] Session active :", user.username),
-      error: () => console.log("[Menu] Pas de session (401)")
-    });
+    // Forcer le rafraîchissement Angular pour l'état login
+    this.userService.loggedIn$.subscribe(() => this.cdr.detectChanges());
   }
 
   logout() {
@@ -45,5 +30,22 @@ export class Menu implements OnInit {
       next: () => this.router.navigate(['/login']),
       error: err => console.error("Erreur logout", err)
     });
+  }
+
+  // Scroll listener
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    const st = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (st > this.lastScrollTop && st > 50) {
+      // Scroll down
+      this.navbarHidden = true;
+    } else {
+      // Scroll up
+      this.navbarHidden = false;
+    }
+
+    this.lastScrollTop = st <= 0 ? 0 : st;
+    this.cdr.detectChanges(); // Met à jour Angular
   }
 }
