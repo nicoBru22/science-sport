@@ -8,4 +8,6 @@ export abstract class ArticleService {
     abstract deleteArticle(id: string): Observable<void>;
     abstract getthreeLastArticles(): Observable<Article[]>;
     abstract updateArticle(article: Article): Observable<Article>;
+    abstract getListArticleByWithWord(word: string): Observable<Article[]>;
+    abstract getListArticleFiteredByCategorie(categorie: string): Observable<Article[]>;
 }

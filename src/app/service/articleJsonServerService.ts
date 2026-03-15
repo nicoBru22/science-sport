@@ -37,4 +37,16 @@ export class ArticleJsonServerService implements ArticleService {
         }
         return this.http.put<Article>(`${this.Article_API_URL}/${article.id}`, article);
     }
+
+    getListArticleByWithWord(word: string): Observable<Article[]> {
+        return this.http.get<Article[]>(`${this.Article_API_URL}/rechercherParMot`, {
+            params: { mot: word }
+        });
+    }
+
+    getListArticleFiteredByCategorie(categorie: string): Observable<Article[]> {
+        return this.http.get<Article[]>(`${this.Article_API_URL}/rechercherParCategorie`, {
+            params: { categorie: categorie }
+        });
+    }
 }

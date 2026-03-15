@@ -1,5 +1,25 @@
+<section class="filtreBlog">
+  <input
+    type="text"
+    placeholder="Rechercher par mot..."
+    [ngModel]="motRecherche()"
+    (ngModelChange)="motRecherche.set($event); rechercherMot()"
+  />
+
+  <div class="checkboxCategories">
+    <label *ngFor="let cat of categories">
+      <input
+        type="checkbox"
+        [value]="cat"
+        (change)="toggleCategorie(cat, $event.target.checked)"
+      />
+      {{ cat }}
+    </label>
+  </div>
+</section>
+
 <div class="containerCarte">
-    @for (article of articleList(); track article.id) {
+    @for (article of filteredArticles(); track article.id) {
     <div class="carteArticle" [routerLink]="['/article', article.id]">
         <div class="carteClick">
             <div class="containerImgArticle">
