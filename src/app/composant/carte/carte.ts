@@ -24,12 +24,6 @@ export class Carte {
   // Toutes les catégories possibles
   categories = ['Physiologie', 'Entraînement', 'Biomécanique', 'Nutrition', 'Psychologie'];
 
-    Physiologie = 'Physiologie',
-  Biomecanique = 'Biomécanique',
-  Nutrition = 'Nutrition',
-  Psychologie = 'Psychologie du sport',
-  Entrainement = 'Entraînement',
-
   // Signal pour les catégories sélectionnées
   selectedCategories = signal<string[]>([]);
 
