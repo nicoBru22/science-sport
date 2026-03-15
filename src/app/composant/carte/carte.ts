@@ -22,7 +22,13 @@ export class Carte {
   motRecherche = signal('');
 
   // Toutes les catégories possibles
-  categories = ['Nutrition', 'Entraînement', 'Récupération'];
+  categories = ['Physiologie', 'Entraînement', 'Biomécanique', 'Nutrition', 'Psychologie'];
+
+    Physiologie = 'Physiologie',
+  Biomecanique = 'Biomécanique',
+  Nutrition = 'Nutrition',
+  Psychologie = 'Psychologie du sport',
+  Entrainement = 'Entraînement',
 
   // Signal pour les catégories sélectionnées
   selectedCategories = signal<string[]>([]);
