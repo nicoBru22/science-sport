@@ -9,6 +9,7 @@ import { Login } from './pages/login/login';
 import { CreerCompte } from './pages/creer-compte/creer-compte';
 import { ModifierArticle } from './pages/modifier-article/modifier-article';
 import { SportHandicap } from './pages/sport-handicap/sport-handicap';
+import { Exercices } from './pages/exercices/exercices';
 
 export const routes: Routes = [
     {
@@ -35,6 +36,11 @@ export const routes: Routes = [
         path: 'handicap',
         component: SportHandicap,
         title: "Sport & Handicap"
+    },
+    {
+        path: 'exercices',
+        component: Exercices,
+        title: "Exercices"
     },
     {
         path: 'login',
